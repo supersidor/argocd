@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k3s-test
+spec:
+  destination:
+    namespace: k3s-test
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: mychart
+    repoURL: https://github.com/supersidor/k3s-test-repo.git
+    targetRevision: HEAD
+    helm:
+      releaseName: k3s-test
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: image.tag
+          value: $ARGOCD_APP_REVISION_SHORT
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
