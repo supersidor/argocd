@@ -19,5 +19,8 @@ spec:
         - name: image.tag
           value: $ARGOCD_APP_REVISION_SHORT
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
