@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: mychart
+    path: chart
     repoURL: https://github.com/supersidor/k3s-test-repo.git
     targetRevision: HEAD
     helm:
