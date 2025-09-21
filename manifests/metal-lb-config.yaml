@@ -1,4 +1,4 @@
-# metallb-config.yaml
+# metallb-metal-lb-config.yaml
 ---
 # Metallb address pool
 apiVersion: metallb.io/v1beta1
