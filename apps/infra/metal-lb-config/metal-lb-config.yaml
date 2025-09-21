@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/supersidor/argocd
-    path: manifests/infra/metal-lb-config/config
+    path: manifests/metal-lb-config.yaml
     targetRevision: main
     directory:
       recurse: true
