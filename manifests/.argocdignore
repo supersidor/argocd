@@ -1,0 +1,3 @@
+# Exclude raw MetalLB config; owned by argocd/metallb-config app
+infra/metal-lb-config/config/**
+
