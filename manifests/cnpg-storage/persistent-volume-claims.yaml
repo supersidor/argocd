@@ -1,8 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-1
-  namespace: default
+  name: pg-main-1-data
+  namespace: cnpg-cluster-main
+  labels:
+    cnpg.io/cluster: pg-main
+    cnpg.io/instanceName: pg-main-1
+    cnpg.io/pvcRole: PG_DATA
 spec:
   accessModes:
     - ReadWriteOnce
@@ -10,12 +14,17 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  volumeName: pg-main-1-data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-2
-  namespace: default
+  name: pg-main-2-data
+  namespace: cnpg-cluster-main
+  labels:
+    cnpg.io/cluster: pg-main
+    cnpg.io/instanceName: pg-main-2
+    cnpg.io/pvcRole: PG_DATA
 spec:
   accessModes:
     - ReadWriteOnce
@@ -23,12 +32,17 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  volumeName: pg-main-2-data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-3
-  namespace: default
+  name: pg-main-3-data
+  namespace: cnpg-cluster-main
+  labels:
+    cnpg.io/cluster: pg-main
+    cnpg.io/instanceName: pg-main-3
+    cnpg.io/pvcRole: PG_DATA
 spec:
   accessModes:
     - ReadWriteOnce
@@ -36,3 +50,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  volumeName: pg-main-3-data

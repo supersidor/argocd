@@ -2,13 +2,20 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: pg-main
-  namespace: default
+  namespace: cnpg-cluster-main
 spec:
   instances: 3
 
-  storage:
-    storageClass: ceph-rbd
-    size: 1Gi
+  persistentVolumeClaimTemplate:
+    metadata:
+      name: data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: ceph-rbd
+      resources:
+        requests:
+          storage: 1Gi
 
   bootstrap:
     initdb:
@@ -21,8 +28,8 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: pg-main-app-secret
-  namespace: default
+  namespace: cnpg-cluster-main
 type: kubernetes.io/basic-auth
 stringData:
   username: app
-  password: app
+  password: Iha0mO/EcI1eRui9+bfRqr7FM6M6QB9cv5Eq36VfUKo=
