@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pg-main-1
+  name: pg-main-1-data
 spec:
   capacity:
     storage: 1Gi
@@ -10,8 +10,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
   claimRef:
-    name: pg-main-1
-    namespace: default
+    name: pg-main-1-data
+    namespace: cnpg-cluster-main
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
@@ -22,15 +22,15 @@ spec:
       clusterID: rook-ceph
       pool: k3s
       imageFeatures: layering
-      csi.storage.k8s.io/pv/name: pg-main-1
-      csi.storage.k8s.io/pvc/name: pg-main-1
-      csi.storage.k8s.io/pvc/namespace: default
-    volumeHandle: pg-main-1-volume
+      csi.storage.k8s.io/pv/name: pg-main-1-data
+      csi.storage.k8s.io/pvc/name: pg-main-1-data
+      csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
+    volumeHandle: 9dab7605-db09-435b-a10d-5e7b335addfd
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pg-main-2
+  name: pg-main-2-data
 spec:
   capacity:
     storage: 1Gi
@@ -39,8 +39,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
   claimRef:
-    name: pg-main-2
-    namespace: default
+    name: pg-main-2-data
+    namespace: cnpg-cluster-main
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
@@ -51,15 +51,15 @@ spec:
       clusterID: rook-ceph
       pool: k3s
       imageFeatures: layering
-      csi.storage.k8s.io/pv/name: pg-main-2
-      csi.storage.k8s.io/pvc/name: pg-main-2
-      csi.storage.k8s.io/pvc/namespace: default
-    volumeHandle: pg-main-2-volume
+      csi.storage.k8s.io/pv/name: pg-main-2-data
+      csi.storage.k8s.io/pvc/name: pg-main-2-data
+      csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
+    volumeHandle: 7716b6b5-95ad-4ab6-a9c8-e8ccae3f08c4
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pg-main-3
+  name: pg-main-3-data
 spec:
   capacity:
     storage: 1Gi
@@ -68,8 +68,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
   claimRef:
-    name: pg-main-3
-    namespace: default
+    name: pg-main-3-data
+    namespace: cnpg-cluster-main
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
@@ -80,7 +80,7 @@ spec:
       clusterID: rook-ceph
       pool: k3s
       imageFeatures: layering
-      csi.storage.k8s.io/pv/name: pg-main-3
-      csi.storage.k8s.io/pvc/name: pg-main-3
-      csi.storage.k8s.io/pvc/namespace: default
-    volumeHandle: pg-main-3-volume
+      csi.storage.k8s.io/pv/name: pg-main-3-data
+      csi.storage.k8s.io/pvc/name: pg-main-3-data
+      csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
+    volumeHandle: 095be9a5-0da9-4a6c-803f-95bee6d218c6
