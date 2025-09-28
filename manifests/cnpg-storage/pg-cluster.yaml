@@ -6,35 +6,21 @@ metadata:
 spec:
   instances: 3
 
-  # Storage configuration
   storage:
-    size: 1Gi
-    storageClass: ceph-rbd
+    pvcTemplate:
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: ceph-rbd
+        resources:
+          requests:
+            storage: 1Gi
 
-  # Bootstrap configuration
   bootstrap:
     initdb:
       database: app
       owner: app
       secret:
         name: pg-main-app-secret
-
-#  # PostgreSQL configuration
-#  postgresql:
-#    parameters:
-#      max_connections: "200"
-#      shared_buffers: "256MB"
-#      effective_cache_size: "512MB"
-
-  # Monitoring
-  monitoring:
-    enabled: false
-
-  # Resources
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "250m"
 ---
 apiVersion: v1
 kind: Secret
