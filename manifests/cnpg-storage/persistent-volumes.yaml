@@ -21,11 +21,12 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      imageName: cnpg-pg-main-1
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-1-data
       csi.storage.k8s.io/pvc/name: pg-main-1-data
       csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
-    volumeHandle: 9dab7605-db09-435b-a10d-5e7b335addfd
+    volumeHandle: k3s/cnpg-pg-main-1
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -50,11 +51,12 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      imageName: cnpg-pg-main-2
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-2-data
       csi.storage.k8s.io/pvc/name: pg-main-2-data
       csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
-    volumeHandle: 7716b6b5-95ad-4ab6-a9c8-e8ccae3f08c4
+    volumeHandle: k3s/cnpg-pg-main-2
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -79,8 +81,9 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      imageName: cnpg-pg-main-3
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-3-data
       csi.storage.k8s.io/pvc/name: pg-main-3-data
       csi.storage.k8s.io/pvc/namespace: cnpg-cluster-main
-    volumeHandle: 095be9a5-0da9-4a6c-803f-95bee6d218c6
+    volumeHandle: k3s/cnpg-pg-main-3
