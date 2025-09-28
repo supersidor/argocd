@@ -18,6 +18,15 @@ spec:
     nodeStageSecretRef:
       name: rook-csi-rbd-node
       namespace: rook-ceph
+    nodePublishSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    controllerPublishSecretRef:
+      name: rook-csi-rbd-provisioner
+      namespace: rook-ceph
+    controllerExpandSecretRef:
+      name: rook-csi-rbd-provisioner
+      namespace: rook-ceph
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
@@ -49,6 +58,15 @@ spec:
     nodeStageSecretRef:
       name: rook-csi-rbd-node
       namespace: rook-ceph
+    nodePublishSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    controllerPublishSecretRef:
+      name: rook-csi-rbd-provisioner
+      namespace: rook-ceph
+    controllerExpandSecretRef:
+      name: rook-csi-rbd-provisioner
+      namespace: rook-ceph
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
@@ -79,6 +97,15 @@ spec:
     fsType: ext4
     nodeStageSecretRef:
       name: rook-csi-rbd-node
+      namespace: rook-ceph
+    nodePublishSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    controllerPublishSecretRef:
+      name: rook-csi-rbd-provisioner
+      namespace: rook-ceph
+    controllerExpandSecretRef:
+      name: rook-csi-rbd-provisioner
       namespace: rook-ceph
     volumeAttributes:
       clusterID: rook-ceph
