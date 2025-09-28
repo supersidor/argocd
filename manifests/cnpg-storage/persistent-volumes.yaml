@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pg-main-1
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    fsType: ext4
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      imageFeatures: layering
+      csi.storage.k8s.io/pv/name: pg-main-1
+      csi.storage.k8s.io/pvc/name: pg-main-1
+      csi.storage.k8s.io/pvc/namespace: default
+    volumeHandle: pg-main-1-volume
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pg-main-2
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    fsType: ext4
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      imageFeatures: layering
+      csi.storage.k8s.io/pv/name: pg-main-2
+      csi.storage.k8s.io/pvc/name: pg-main-2
+      csi.storage.k8s.io/pvc/namespace: default
+    volumeHandle: pg-main-2-volume
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pg-main-3
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    fsType: ext4
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      imageFeatures: layering
+      csi.storage.k8s.io/pv/name: pg-main-3
+      csi.storage.k8s.io/pvc/name: pg-main-3
+      csi.storage.k8s.io/pvc/namespace: default
+    volumeHandle: pg-main-3-volume
