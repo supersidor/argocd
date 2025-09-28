@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-1-data
+  name: pg-main-1
   namespace: cnpg-cluster-main
   labels:
     cnpg.io/cluster: pg-main
@@ -14,12 +14,12 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pg-main-1-data
+  volumeName: pg-main-1
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-2-data
+  name: pg-main-2
   namespace: cnpg-cluster-main
   labels:
     cnpg.io/cluster: pg-main
@@ -32,12 +32,12 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pg-main-2-data
+  volumeName: pg-main-2
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pg-main-3-data
+  name: pg-main-3
   namespace: cnpg-cluster-main
   labels:
     cnpg.io/cluster: pg-main
@@ -50,4 +50,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pg-main-3-data
+  volumeName: pg-main-3
