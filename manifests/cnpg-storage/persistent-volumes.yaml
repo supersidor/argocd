@@ -21,6 +21,7 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      staticVolume: "true"
       imageName: cnpg-pg-main-1
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-1-data
@@ -51,6 +52,7 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      staticVolume: "true"
       imageName: cnpg-pg-main-2
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-2-data
@@ -81,6 +83,7 @@ spec:
     volumeAttributes:
       clusterID: rook-ceph
       pool: k3s
+      staticVolume: "true"
       imageName: cnpg-pg-main-3
       imageFeatures: layering
       csi.storage.k8s.io/pv/name: pg-main-3-data
