@@ -7,13 +7,8 @@ spec:
   instances: 3
 
   storage:
-    pvcTemplate:
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: ceph-rbd
-        resources:
-          requests:
-            storage: 1Gi
+    storageClass: ceph-rbd
+    size: 1Gi
 
   bootstrap:
     initdb:
