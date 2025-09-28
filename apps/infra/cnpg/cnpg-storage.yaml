@@ -13,6 +13,7 @@ spec:
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
+    namespace: my-cluster
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
