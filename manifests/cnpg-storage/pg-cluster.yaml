@@ -6,16 +6,9 @@ metadata:
 spec:
   instances: 3
 
-  persistentVolumeClaimTemplate:
-    metadata:
-      name: data
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      storageClassName: ceph-rbd
-      resources:
-        requests:
-          storage: 1Gi
+  storage:
+    size: 1Gi
+    storageClass: ceph-rbd
 
   bootstrap:
     initdb:
@@ -32,4 +25,4 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
   username: app
-  password: Iha0mO/EcI1eRui9+bfRqr7FM6M6QB9cv5Eq36VfUKo=
+  password: app
