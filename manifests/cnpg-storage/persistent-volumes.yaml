@@ -9,6 +9,9 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
+  claimRef:
+    name: pg-main-1
+    namespace: default
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
@@ -35,6 +38,9 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
+  claimRef:
+    name: pg-main-2
+    namespace: default
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
@@ -61,6 +67,9 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ceph-rbd
+  claimRef:
+    name: pg-main-3
+    namespace: default
   csi:
     driver: rook-ceph.rbd.csi.ceph.com
     fsType: ext4
