@@ -1,0 +1,47 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-main
+  namespace: default
+spec:
+  instances: 3
+
+  # Storage configuration
+  storage:
+    size: 1Gi
+    storageClass: ceph-rbd
+
+  # Bootstrap configuration
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: pg-main-app-secret
+
+#  # PostgreSQL configuration
+#  postgresql:
+#    parameters:
+#      max_connections: "200"
+#      shared_buffers: "256MB"
+#      effective_cache_size: "512MB"
+
+  # Monitoring
+  monitoring:
+    enabled: false
+
+  # Resources
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg-main-app-secret
+  namespace: default
+type: kubernetes.io/basic-auth
+stringData:
+  username: app
+  password: app
