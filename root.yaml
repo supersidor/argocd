@@ -1,18 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: services-root
+  name: root-app
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
     repoURL: https://github.com/supersidor/argocd
     targetRevision: main
-    path: apps/services
+    path: .
     directory:
-      recurse: true
+      recurse: false
+      include: '{database.yaml,infra.yaml,services.yaml}'
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -22,3 +21,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - Wait=true
+

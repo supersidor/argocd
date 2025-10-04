@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: services-root
+  name: database-root-app
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
     repoURL: https://github.com/supersidor/argocd
     targetRevision: main
-    path: apps/services
+    path: apps/database
     directory:
       recurse: true
   destination:
