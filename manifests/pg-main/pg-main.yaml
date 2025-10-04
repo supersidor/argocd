@@ -19,12 +19,12 @@ spec:
 
   superuserSecret:
     name: pg-main-super-secret
-#  bootstrap:
-#    initdb:
-#      database: app
-#      owner: app
-#      secret:
-#        name: pg-main-app-secret
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: pg-main-app-secret
 ---
 apiVersion: v1
 kind: Secret
