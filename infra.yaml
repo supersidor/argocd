@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/supersidor/argocd
     targetRevision: main
-    path: apps
+    path: apps/infra
     directory:
       recurse: true
   destination:
