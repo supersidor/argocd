@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-cnpg-pg-main-1
+  name: pg-main-1
   namespace: cnpg-cluster-main
 spec:
   accessModes:
@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-cnpg-pg-main-2
+  name: pg-main-2
   namespace: cnpg-cluster-main
 spec:
   accessModes:
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-cnpg-pg-main-3
+  name: pg-main-3
   namespace: cnpg-cluster-main
 spec:
   accessModes:
