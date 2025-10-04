@@ -11,13 +11,13 @@ spec:
     storageClass: ceph-rbd-existing
 
   superuserSecret:
-    name: pg-main-app-secret
-#  bootstrap:
-#    initdb:
-#      database: app
-#      owner: app
-#      secret:
-#        name: pg-main-app-secret
+    name: pg-main-super-secret
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: pg-main-app-secret
 ---
 apiVersion: v1
 kind: Secret
@@ -28,3 +28,13 @@ type: kubernetes.io/basic-auth
 stringData:
   username: app
   password: app
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg-main-super-secret
+  namespace: cnpg-cluster-main
+type: kubernetes.io/basic-auth
+stringData:
+  username: postgres
+  password: postgres
