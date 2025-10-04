@@ -14,8 +14,6 @@ spec:
         controller:
           service:
             type: LoadBalancer
-        tcp:
-          5432: "cnpg-cluster-main/pg-main-rw:5432"
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
