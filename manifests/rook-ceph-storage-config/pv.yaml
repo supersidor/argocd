@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cnpg-pg-main-1
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd-existing
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    volumeHandle: static-pv-cnpg-pg-main-1
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      staticVolume: "true"
+      imageName: static-pv-cnpg-pg-main-1
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cnpg-pg-main-2
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd-existing
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    volumeHandle: static-pv-cnpg-pg-main-2
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      staticVolume: "true"
+      imageName: static-pv-cnpg-pg-main-2
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cnpg-pg-main-3
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ceph-rbd-existing
+  csi:
+    driver: rook-ceph.rbd.csi.ceph.com
+    volumeHandle: static-pv-cnpg-pg-main-3
+    volumeAttributes:
+      clusterID: rook-ceph
+      pool: k3s
+      staticVolume: "true"
+      imageName: static-pv-cnpg-pg-main-3
+    nodeStageSecretRef:
+      name: rook-csi-rbd-node
+      namespace: rook-ceph
