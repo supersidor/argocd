@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cnpg-pg-main-1
+  namespace: cnpg-cluster-main
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-rbd-existing
+  volumeName: pv-cnpg-pg-main-1
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cnpg-pg-main-2
+  namespace: cnpg-cluster-main
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-rbd-existing
+  volumeName: pv-cnpg-pg-main-2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cnpg-pg-main-3
+  namespace: cnpg-cluster-main
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ceph-rbd-existing
+  volumeName: pv-cnpg-pg-main-3
