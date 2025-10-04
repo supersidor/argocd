@@ -35,7 +35,7 @@ Applications use the following pattern:
 ### ArgoCD Operations
 ```bash
 # Apply root application (bootstraps everything)
-kubectl apply -f root.yaml
+kubectl apply -f infra.yaml
 
 # Check application status
 kubectl get applications -n argocd
