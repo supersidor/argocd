@@ -7,17 +7,24 @@ spec:
   instances: 3
 
   storage:
-    size: 10Gi
     storageClass: ceph-rbd-existing
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: ceph-rbd-existing
+      volumeMode: Filesystem
 
   superuserSecret:
     name: pg-main-super-secret
-  bootstrap:
-    initdb:
-      database: app
-      owner: app
-      secret:
-        name: pg-main-app-secret
+#  bootstrap:
+#    initdb:
+#      database: app
+#      owner: app
+#      secret:
+#        name: pg-main-app-secret
 ---
 apiVersion: v1
 kind: Secret
