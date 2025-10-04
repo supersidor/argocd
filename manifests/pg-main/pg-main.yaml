@@ -10,6 +10,12 @@ spec:
     size: 10Gi
     storageClass: ceph-rbd-existing
 
+  bootstrap:
+    recovery:
+      source: existing
+
+  superuserSecret:
+    name: pg-main-app-secret
 #  bootstrap:
 #    initdb:
 #      database: app
