@@ -1,0 +1,45 @@
+apiVersion: kyverno.io/v1
+kind: Policy
+metadata:
+  name: pg-main-mutation
+  namespace: cnpg-cluster-main
+spec:
+  rules:
+    - name: initdb-command
+      match:
+        any:
+          - resources:
+              kinds:
+                - Job
+              selector:
+                matchLabels:
+                  cnpg.io/cluster: pg-main
+                  cnpg.io/jobRole: initdb
+      mutate:
+        patchStrategicMerge:
+          spec:
+            template:
+              spec:
+                containers:
+                  - (name): "*"
+                    env:
+                      - name: ORIGINAL_FULL_CMD
+                        value: "{{ join('%%%', request.object.spec.template.spec.containers[0].command) }}"
+                    command:
+                      - /bin/bash
+                      - -c
+                      - |
+                        set -e
+                        
+                        echo "Checking if folder $PGDATA already exists"
+                        if [ -d "$PGDATA" ]; then
+                          echo "✓ Folder $PGDATA already exists, reusing it."
+                          exit 0
+                        fi
+                        
+                        echo "✗ Folder $PGDATA doesn't exist yet"
+                        echo "→ Run original CloudNativePG init..."
+                        CLEANED_CMD=$(echo $ORIGINAL_FULL_CMD | sed  "s/%%%/ '/" | sed "s/%%%/' '/g")\'
+                        echo "-> Original command: $CLEANED_CMD"
+                        # Run original command
+                        exec bash -c "$CLEANED_CMD"
