@@ -10,12 +10,12 @@ spec:
     size: 10Gi
     storageClass: ceph-rbd-existing
 
-  bootstrap:
-    initdb:
-      database: app
-      owner: app
-      secret:
-        name: pg-main-app-secret
+#  bootstrap:
+#    initdb:
+#      database: app
+#      owner: app
+#      secret:
+#        name: pg-main-app-secret
 ---
 apiVersion: v1
 kind: Secret
