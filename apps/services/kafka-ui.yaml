@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-ui
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://kafbat.github.io/helm-charts
+    chart: kafka-ui
+    targetRevision: 1.6.5
+    helm:
+      releaseName: kafka-ui
+      values: |
+        yamlApplicationConfig:
+          kafka:
+            clusters:
+              - name: kafka-main
+                bootstrapServers: kafka-main-kafka-bootstrap.kafka.svc:9092
+          auth:
+            type: disabled
+          management:
+            health:
+              ldap:
+                enabled: false
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          host: kafka-ui.homelab
+          annotations:
+            external-dns.alpha.kubernetes.io/hostname: kafka-ui.homelab
+        resources:
+          requests:
+            cpu: 100m
+            memory: 384Mi
+          limits:
+            memory: 768Mi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka-ui
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
