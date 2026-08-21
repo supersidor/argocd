@@ -9,6 +9,16 @@ spec:
     repoURL: https://kyverno.github.io/kyverno/
     chart: kyverno
     targetRevision: 3.3.8
+    helm:
+      values: |
+        # bitnami/kubectl was purged from Docker Hub (Broadcom shutdown);
+        # the frozen copies live under bitnamilegacy
+        policyReportsCleanup:
+          image:
+            repository: bitnamilegacy/kubectl
+        webhooksCleanup:
+          image:
+            repository: bitnamilegacy/kubectl
   destination:
     server: https://kubernetes.default.svc
     namespace: kyverno
