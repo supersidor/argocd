@@ -12,6 +12,13 @@ spec:
   roles:
     - controller
     - broker
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      cpu: "2"
+      memory: 3Gi
   storage:
     type: jbod
     volumes:
@@ -65,13 +72,6 @@ spec:
       transaction.state.log.min.isr: 2
       default.replication.factor: 3
       min.insync.replicas: 2
-    resources:
-      requests:
-        cpu: 500m
-        memory: 2Gi
-      limits:
-        cpu: "2"
-        memory: 3Gi
     jvmOptions:
       -Xms: 1024m
       -Xmx: 1024m
