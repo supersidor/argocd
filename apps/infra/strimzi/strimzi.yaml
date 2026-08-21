@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: strimzi
   namespace: argocd
+  annotations:
+    # The ~9k-line Kafka CRD produces false OutOfSync diffs under client-side
+    # comparison when applied with ServerSideApply.
+    argocd.argoproj.io/compare-options: ServerSideDiff=true,IncludeMutationWebhook=true
 spec:
   project: default
   source:
