@@ -4,8 +4,15 @@ metadata:
   name: pg-main-mutation
   namespace: cnpg-cluster-main
 spec:
+  # explicit kyverno defaults — the webhook adds these on admission, and
+  # omitting them keeps the ArgoCD app permanently OutOfSync
+  admission: true
+  background: true
+  emitWarning: false
+  validationFailureAction: Audit
   rules:
     - name: initdb-command
+      skipBackgroundRequests: true
       match:
         any:
           - resources:
