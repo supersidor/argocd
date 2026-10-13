@@ -39,7 +39,7 @@ root.yaml (root-app)
   ```
 - **Rook-Ceph** — operator + cluster in **external mode** (`external.enable: true`): it connects to a Ceph cluster running outside Kubernetes, not one it provisions. StorageClass `ceph-rbd-existing` (pool `k3s`, `reclaimPolicy: Retain`) is defined in `manifests/rook-ceph-storage-config/`.
 - **CloudNativePG (CNPG)** — operator in infra; the `pg-main` 3-instance Postgres cluster in `apps/database/cnpg/` uses `ceph-rbd-existing` storage and is exposed at `pg-main.homelab` via a LoadBalancer Service selecting the primary.
-- **Redis HA** — `redis-ha` chart in `apps/database/redis/` (namespace `redis`): 3 Redis pods with Sentinel failover on `ceph-rbd-existing`, fronted by 3 HAProxy pods that route only to the current master. Cluster-only, no auth; apps connect to `redis-haproxy.redis.svc.cluster.local:6379`.
+- **Redis HA** — `redis-ha` chart in `apps/database/redis/` (namespace `redis`): 3 Redis pods with Sentinel failover on `ceph-rbd-existing`, fronted by 3 HAProxy pods that route only to the current master. No auth; apps in the cluster connect to `redis-haproxy.redis.svc.cluster.local:6379`, and the LAN reaches it at `redis.homelab:6379` (LoadBalancer on `redis-haproxy`, hostname via external-dns).
 - **Kyverno** — used for mutation policies, e.g. `manifests/pg-main/kyverno.yaml` wraps the CNPG initdb Job command to skip initdb when `$PGDATA` already exists (reusing pre-existing Ceph volumes).
 - **cloudflared** — Cloudflare Tunnel deployment in `cloudflare-tunnel` namespace; tunnel credentials are a SealedSecret.
 

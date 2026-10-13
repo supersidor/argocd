@@ -33,6 +33,10 @@ spec:
           enabled: true
           replicas: 3
           hardAntiAffinity: true
+          service:
+            type: LoadBalancer
+            annotations:
+              external-dns.alpha.kubernetes.io/hostname: redis.homelab
   destination:
     server: https://kubernetes.default.svc
     namespace: redis
